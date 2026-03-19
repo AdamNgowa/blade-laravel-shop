@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dumatech Shop</title>
+    <title>Shop</title>
 </head>
 <body>
 
@@ -10,7 +10,7 @@
         <a href="/shop">Shop</a>
     </nav>
 
-    <h1>Welcome to Dumatech Shop</h1>
+    <h1>Shop</h1>
 
     @foreach($products as $product)
         <div>

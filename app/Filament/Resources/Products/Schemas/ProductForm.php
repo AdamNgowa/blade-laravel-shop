@@ -34,6 +34,7 @@ class ProductForm
                     ->required(),
                 FileUpload::make('image')
                     ->image()
+                    ->disk('public')
                     ->directory('dumatech/products'),
             ]);
     }
