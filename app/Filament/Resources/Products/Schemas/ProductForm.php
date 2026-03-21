@@ -7,6 +7,7 @@ use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Textarea;
 use Filament\Schemas\Schema;
+use Illuminate\Support\Str;
 
 class ProductForm
 {
@@ -15,9 +16,15 @@ class ProductForm
         return $schema
             ->components([
                 TextInput::make('title')
-                    ->required(),
+                    ->required()
+                    ->live(onBlur:true)//watches for changes
+                    ->afterStateUpdated(function ($state,callable $set){
+                        $set('slug',Str::slug($state));//auto generates slug
+                    }),                 
                 TextInput::make('slug')
-                    ->required(),
+                    ->required()
+                    ->unique(ignoreRecord:true)//ensured slug is unique
+                    ->readOnly(),//prevents manual editing
                 Textarea::make('description')
                     ->required()
                     ->columnSpanFull(),

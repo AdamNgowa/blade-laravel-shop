@@ -11,6 +11,7 @@ Route::middleware(['auth'])->group(function(){
     Route::controller(MainController::class)->group(function(){
         Route::get('/', 'welcome')->name('welcome');
         Route::get('/shop', 'shop')->name('shop');
+        Route::get('/products/{slug}','product')->name('product');
     });
 
     // Dashboard

@@ -1,10 +1,14 @@
-@props(['productInCard'])
-<div class="bg-white rounded shadow  p-4">
-    @if ($productInCard->image)
-        <img src="{{ asset('storage/'.$productInCard->image) }}" 
-        class="w-full h-48 object-cover rounded">        
-    @endif
-    <h3 class="text-lg font-bold mt-2">{{$productInCard->title}}</h3>
-    <p class="text-sm text-gray-500">{{$productInCard->category->name}}</p>
-    <p class="font-semibold text-green-400 mt-3"></p>
+@props(["product"])
+<div class="rounded bg-white p-4 shadow">
+   @if ($product->image)
+      <img src="{{ asset("storage/" . $product->image) }}" class="h-48 w-full rounded object-cover">
+   @endif
+   <h3 class="mt-2 text-lg font-bold">{{ $product->title }}</h3>
+   <p class="text-sm text-gray-500">{{ $product->category->name }}</p>
+   <p class="mt-3 font-semibold text-green-400">{{ $product->price }}</p>
+   {{-- Product link --}}
+   <a href="{{ route("product", $product->slug) }}"
+      class="mt-4 block rounded bg-blue-600 py-2 text-center text-white hover:bg-blue-700">
+
+      View Product</a>
 </div>

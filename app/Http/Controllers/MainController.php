@@ -15,4 +15,10 @@ class MainController extends Controller
         $products = Product::with('category')->get();
         return view('shop',compact('products'));
     }
+    public function product($slug){
+        $product=Product::where('slug',$slug)
+        ->with('category')
+        ->firstOrFail();//returns 404 if product not found
+        return view('product',compact('product'));
+    }
 }
