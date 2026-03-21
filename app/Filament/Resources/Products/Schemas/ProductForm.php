@@ -28,7 +28,7 @@ class ProductForm
                 TextInput::make('quantity')
                     ->required()
                     ->numeric(),
-                //Category id is where     
+                 
                 Select::make('category_id')        
                     ->relationship('category', 'name')
                     ->required(),

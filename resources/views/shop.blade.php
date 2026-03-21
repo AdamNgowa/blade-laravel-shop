@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Shop</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800">Shop</h2>
+    </x-slot>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/shop">Shop</a>
-    </nav>
-
-    <h1>Shop</h1>
-
-    @foreach($products as $product)
-        <div>
-            @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" width="200">
-            @endif
-            <h3>{{ $product->title }}</h3>
-            <p>{{ $product->category->name }}</p>
-            <p>${{ $product->price }}</p>
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-3 gap-6">
+            @foreach($products as $product)
+                <x-product-card :productInCard="$product" />
+            @endforeach
         </div>
-    @endforeach
-
-</body>
-</html>
+    </div>
+</x-app-layout>

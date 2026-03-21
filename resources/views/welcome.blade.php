@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Dumatech Shop</title>
-</head>
-<body>
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800">Welcome</h2>
+    </x-slot>
 
-    <nav>
-        <a href="/">Home</a>
-        <a href="/shop">Shop</a>
-    </nav>
-
-    <h1>Welcome to Dumatech Shop</h1>
-
-    @foreach($products as $product)
-        <div>
-            @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" width="200">
-            @endif
-            <h3>{{ $product->title }}</h3>
-            <p>{{ $product->category->name }}</p>
-            <p>${{ $product->price }}</p>
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-3 gap-6">
+            @foreach($products as $productInWelcome)
+                <x-product-card :productInCard="$productInWelcome" />
+            @endforeach
         </div>
-    @endforeach
-
-</body>
-</html>
+    </div>
+</x-app-layout>
