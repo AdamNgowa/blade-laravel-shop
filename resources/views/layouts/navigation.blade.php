@@ -38,6 +38,9 @@
                   <x-nav-link :href="route('cart')" :active="request()->routeIs('cart')">
                      Cart ({{ Auth::user()->cart->count() }})
                   </x-nav-link>
+                  <x-nav-link :href="route('orders')" :active="request()->routeIs('orders')">
+                     My Orders
+                  </x-nav-link>
                </div>
             @endif
          </div>

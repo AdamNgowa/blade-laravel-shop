@@ -93,9 +93,10 @@
 
             <div class="text-right">
                <p class="text-xl font-bold">Total: ${{ number_format($total, 2) }}</p>
-               <button class="mt-2 rounded bg-green-600 px-8 py-3 text-white hover:bg-green-700">
+               <a href="{{ route('checkout') }}"
+                  class="mt-2 rounded bg-green-600 px-8 py-3 text-white hover:bg-green-700">
                   Checkout
-               </button>
+               </a>
             </div>
          </div>
 

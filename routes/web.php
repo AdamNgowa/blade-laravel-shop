@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,14 @@ Route::middleware(['auth'])->group(function(){
         Route::delete('/cart/remove/{id}','remove')->name('cart.remove');
         Route::patch('/cart/update/{id}','update')->name('cart.update');
         Route::delete('/cart/clear','clear')->name('cart.clear');
+    });
+
+    //Order routes
+    Route::controller(OrderController::class)->group(function(){
+        Route::get('/checkout','checkout')->name('checkout');
+        Route::post('/checkout','placeOrder')->name('order.place');
+        Route::get('/orders','index')->name('orders');
+        Route::get('/orders/{id}','show')->name('order.show');
     });
 
     // Dashboard
