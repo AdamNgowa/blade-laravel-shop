@@ -22,6 +22,9 @@
                   <x-nav-link :href="route('shop')" :active="request()->routeIs('shop')">
                      {{ __('Shop') }}
                   </x-nav-link>
+                  <x-nav-link :href="route('cart')" :active="request()->routeIs('cart')">
+                     🛒 Cart ({{ Auth::user()->cart->count() }})
+                  </x-nav-link>
                </div>
             @else
                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
@@ -31,6 +34,9 @@
                   </x-nav-link>
                   <x-nav-link :href="route('shop')" :active="request()->routeIs('shop')">
                      {{ __('Shop') }}
+                  </x-nav-link>
+                  <x-nav-link :href="route('cart')" :active="request()->routeIs('cart')">
+                     Cart ({{ Auth::user()->cart->count() }})
                   </x-nav-link>
                </div>
             @endif

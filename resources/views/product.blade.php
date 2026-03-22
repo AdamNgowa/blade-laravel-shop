@@ -6,7 +6,7 @@
       <div class="flex gap-8 rounded bg-white p-6 shadow">
          {{-- Image --}}
          @if ($product->image)
-            <img src="{{ asset("storage/" . $product->image) }}" class="h-80 w-80 rounded-sm object-cover">
+            <img src="{{ asset('storage/' . $product->image) }}" class="h-80 w-80 rounded-sm object-cover">
          @endif
          {{-- details --}}
          <div>
@@ -15,9 +15,15 @@
             <p class="mt-2 text-2xl font-semibold text-green-600">${{ $product->price }}</p>
             <p class="mt-4 text-gray-600">{{ $product->description }}</p>
             <p class="mt-4 text-sm text-gray-400">{{ $product->quantity }} in stock</p>
-            <button class="mt-6 rounded bg-blue-600 px-6 py-2 text-white hover:bg-blue-700">
-               Add to Cart
-            </button>
+            {{-- Add to cart --}}
+            <form action="{{ route('cart.add') }}" method="post">
+               @csrf
+               <input type="hidden" name="product_id" value={{ $product->id }}>
+               <button type="submit" class="mt-2 w-1/4 rounded bg-green-600 py-2 text-white hover:bg-green-700">
+                  Add to Cart
+               </button>
+
+            </form>
          </div>
       </div>
    </div>
