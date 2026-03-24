@@ -17,6 +17,10 @@ class Order extends Model
         'city',
         'phone',
         'notes',
+        'payment_method',
+        'checkout_request_id',
+        'mpesa_receipt_number',
+        
     ];
 
     // Order belongs to a user
